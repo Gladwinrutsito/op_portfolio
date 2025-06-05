@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Gladwin Rutsito - Operations Research & Statistics Professional
+    </title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #667eea;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #1a1a1a;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #667eea;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 120px 0 80px;
+        text-align: center;
+        color: white;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      .hero .subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        opacity: 0;
+        animation: fadeInUp 1s ease 0.2s forwards;
+      }
+
+      .hero .description {
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        opacity: 0.8;
+        opacity: 0;
+        animation: fadeInUp 1s ease 0.4s forwards;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeInUp 1s ease 0.6s forwards;
+      }
+
+      .cta-button:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+      }
+
+      /* Main Content */
+      main {
+        background: white;
+        margin-top: -40px;
+        border-radius: 40px 40px 0 0;
+        position: relative;
+        z-index: 2;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+        color: #1a1a1a;
+      }
+
+      /* About Section */
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .profile-section {
+        text-align: center;
+      }
+
+      .profile-image {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 6px solid #667eea;
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        transition: all 0.3s ease;
+        margin-bottom: 1.5rem;
+      }
+
+      .profile-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
+      }
+
+      .profile-placeholder {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 4rem;
+        font-weight: 700;
+        margin: 0 auto 1.5rem;
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .profile-placeholder:hover {
+        transform: scale(1.05);
+        box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
+      }
+
+      .profile-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 0.5rem;
+      }
+
+      .profile-title {
+        font-size: 1.1rem;
+        color: #667eea;
+        font-weight: 600;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+        color: #4a5568;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .skill-item {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 1rem;
+        border-radius: 12px;
+        text-align: center;
+        font-weight: 600;
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+      }
+
+      .skill-item:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Projects Section */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .project-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #e2e8f0;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-card h3 {
+        color: #667eea;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      .project-card p {
+        color: #4a5568;
+        margin-bottom: 1rem;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .tech-tag {
+        background: #f7fafc;
+        color: #667eea;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: 1px solid #e2e8f0;
+      }
+
+      /* Contact Section */
+      .contact {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        text-align: center;
+      }
+
+      .contact .section-title {
+        color: white;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 2rem;
+      }
+
+      .contact-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .contact-item strong {
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      footer {
+        background: #1a1a1a;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .profile-section {
+          order: -1;
+        }
+
+        .profile-image,
+        .profile-placeholder {
+          width: 200px;
+          height: 200px;
+          font-size: 3rem;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Interactive Elements */
+      .stat-counter {
+        display: flex;
+        justify-content: space-around;
+        margin: 3rem 0;
+        text-align: center;
+      }
+
+      .stat-item {
+        flex: 1;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #667eea;
+        display: block;
+      }
+
+      .stat-label {
+        color: #4a5568;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="container">
+        <div class="logo">Gladwin Rutsito</div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1>Operations Research & Statistics Professional</h1>
+        <p class="subtitle">Transforming Data into Strategic Insights</p>
+        <p class="description">
+          Specialized in optimization modeling, statistical analysis, and
+          data-driven decision making to solve complex business problems and
+          drive operational excellence.
+        </p>
+        <a href="#contact" class="cta-button">Let's Collaborate</a>
+      </div>
+    </section>
+
+    <main>
+      <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="profile-section">
+            <!-- Replace the src with your actual image path -->
+            <!-- <img src="your-profile-image.jpg" alt="Your Name" class="profile-image"> -->
+
+            <!-- Placeholder until you add your image -->
+            <div class="profile-placeholder"><img src="me.png" alt="" /></div>
+            <br />
+            <div class="profile-name">Gladwin Rutsito</div>
+            <div class="profile-title">
+              Operations Research & Statistics Professional
+            </div>
+          </div>
+          <div class="about-details">
+            <div class="about-text">
+              <p>
+                I am a dedicated Operations Research and Statistics professional
+                with expertise in mathematical modeling, statistical analysis,
+                and optimization techniques. My passion lies in translating
+                complex data into actionable insights that drive business value.
+              </p>
+              <br />
+              <p>
+                With experience across various industries, I specialize in
+                supply chain optimization, predictive modeling, and statistical
+                process improvement. I combine theoretical knowledge with
+                practical implementation to deliver robust solutions.
+              </p>
+
+              <div class="stat-counter">
+                <div class="stat-item">
+                  <span class="stat-number">5+</span>
+                  <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">50+</span>
+                  <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">15+</span>
+                  <span class="stat-label">Optimization Models</span>
+                </div>
+              </div>
+            </div>
+            <div class="skills-grid">
+              <div class="skill-item">Linear Programming</div>
+              <div class="skill-item">Statistical Modeling</div>
+              <div class="skill-item">Data Analysis</div>
+              <div class="skill-item">Python/R</div>
+              <div class="skill-item">Supply Chain Optimization</div>
+              <div class="skill-item">Forecasting</div>
+              <div class="skill-item">Machine Learning</div>
+              <div class="skill-item">Simulation Modeling</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>🚚 Supply Chain Optimization Model</h3>
+            <p>
+              Developed a comprehensive linear programming model to optimize
+              distribution network, resulting in 15% cost reduction and improved
+              delivery times for a logistics company.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Gurobi</span>
+              <span class="tech-tag">Linear Programming</span>
+              <span class="tech-tag">Network Optimization</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>📊 Demand Forecasting System</h3>
+            <p>
+              Built a multi-variate time series forecasting model using ARIMA
+              and machine learning techniques, achieving 92% accuracy in demand
+              prediction for retail inventory management.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">R</span>
+              <span class="tech-tag">Time Series</span>
+              <span class="tech-tag">ARIMA</span>
+              <span class="tech-tag">Random Forest</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>🏭 Production Scheduling Optimizer</h3>
+            <p>
+              Designed and implemented a mixed-integer programming solution for
+              production scheduling, optimizing resource allocation and reducing
+              manufacturing costs by 12%.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">CPLEX</span>
+              <span class="tech-tag">Mixed-Integer Programming</span>
+              <span class="tech-tag">Scheduling</span>
+              <span class="tech-tag">Operations Research</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>📈 Statistical Process Control Dashboard</h3>
+            <p>
+              Created an interactive dashboard for real-time statistical process
+              monitoring, implementing control charts and automated anomaly
+              detection for quality assurance.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Plotly Dash</span>
+              <span class="tech-tag">Statistical Process Control</span>
+              <span class="tech-tag">Quality Control</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>🎯 A/B Testing Framework</h3>
+            <p>
+              Developed a comprehensive A/B testing framework with statistical
+              significance testing, power analysis, and automated reporting for
+              marketing campaign optimization.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Statistical Testing</span>
+              <span class="tech-tag">Experimental Design</span>
+              <span class="tech-tag">Hypothesis Testing</span>
+              <span class="tech-tag">Python</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>🔍 Risk Assessment Model</h3>
+            <p>
+              Built a Monte Carlo simulation model for financial risk
+              assessment, providing probabilistic analysis of investment
+              portfolios and risk mitigation strategies.
+            </p>
+            <div class="tech-tags">
+              <span class="tech-tag">Monte Carlo</span>
+              <span class="tech-tag">Risk Analysis</span>
+              <span class="tech-tag">Simulation</span>
+              <span class="tech-tag">Financial Modeling</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container">
+          <h2 class="section-title">Let's Work Together</h2>
+          <p>
+            Ready to optimize your operations and unlock insights from your
+            data?
+          </p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <strong>📧 Email</strong>
+              <span>your.email@example.com</span>
+            </div>
+            <div class="contact-item">
+              <strong>💼 LinkedIn</strong>
+              <span>linkedin.com/in/yourprofile</span>
+            </div>
+            <div class="contact-item">
+              <strong>🐙 GitHub</strong>
+              <span>github.com/yourusername</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2025 Gladwin Rutsito. All rights reserved. | Operations
+          Research & Statistics Professional
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Animate stats counter on scroll
+      function animateCounter(element, target) {
+        let count = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+          count += increment;
+          if (count >= target) {
+            element.textContent = target + "+";
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(count) + "+";
+          }
+        }, 20);
+      }
+
+      // Intersection Observer for animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll(".stat-number");
+            counters.forEach((counter) => {
+              const target = parseInt(counter.textContent);
+              animateCounter(counter, target);
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      const statsSection = document.querySelector(".stat-counter");
+      if (statsSection) {
+        observer.observe(statsSection);
+      }
+
+      // Add hover effect to project cards
+      document.querySelectorAll(".project-card").forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-10px) scale(1.02)";
+        });
+
+        card.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0) scale(1)";
+        });
+      });
+    </script>
+  </body>
+</html>
